@@ -4,16 +4,18 @@ class Html extends DomComponent {
   Html({Map<String, String>? attributes, Iterable<Component>? children})
       : super('html',
             attributes: {
-              'xmlns': 'http://www.w3.org/1999/xhtml',
-              'xmlns:b': 'http://www.google.com/2005/gml/b',
-              'xmlns:data': 'http://www.google.com/2005/gml/data',
-              'xmlns:expr': 'http://www.google.com/2005/gml/expr',
+              // if they are not specified we will default o prefer using these values for better compatibility with Blogger's template requirements shown below, but they can be overridden if needed
               'b:css': 'false',
               'b:defaultwidgetversion': '2',
               'b:layoutsversion': '3',
               'b:responsive': 'true',
               'expr:dir': 'data:blog.languageDirection',
               'expr:lang': 'data:blog.locale',
+              //  below are the standard XML namespaces for Blogger templates and they are fixed
+              'xmlns': 'http://www.w3.org/1999/xhtml',
+              'xmlns:b': 'http://www.google.com/2005/gml/b',
+              'xmlns:data': 'http://www.google.com/2005/gml/data',
+              'xmlns:expr': 'http://www.google.com/2005/gml/expr',
               ...?attributes,
             },
             children: children);

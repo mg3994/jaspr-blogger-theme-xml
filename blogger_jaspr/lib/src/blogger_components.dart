@@ -42,6 +42,14 @@ class BElse extends DomComponent {
   Iterable<Component> build() => [];
 }
 
+class BArg extends DomComponent {
+  BArg({required String name, required String value})
+      : super('b:arg', attributes: {'name': name, 'value': value});
+
+  @override
+  Iterable<Component> build() => [];
+}
+
 class BLoop extends DomComponent {
   BLoop({required String values, required String varName, Iterable<Component>? children})
       : super('b:loop', attributes: {'values': values, 'var': varName}, children: children);
@@ -60,10 +68,9 @@ class BSkin extends Component {
 
   @override
   Iterable<Component> build() => [
-    DomComponent('b:skin', children: [
-      RawText('<![CDATA[\n$css\n]]>')
-    ])
-  ];
+        BComment('prettier-ignore'),
+        DomComponent('b:skin', children: [RawText('<![CDATA[\n$css\n]]>')]),
+      ];
 }
 
 class BInclude extends DomComponent {
@@ -145,6 +152,7 @@ class BTemplateSkin extends Component {
 
   @override
   Iterable<Component> build() => [
+        BComment('prettier-ignore'),
         DomComponent('b:template-skin', children: [RawText('<![CDATA[\n$css\n]]>')])
       ];
 }
