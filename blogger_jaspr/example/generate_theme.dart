@@ -33,18 +33,23 @@ void main() {
                 id: 'Blog1',
                 type: 'Blog',
                 children: [
-                  BIf(
-                    cond: 'data:view.isPost',
+                  BIncludable(
+                    id: 'main',
                     children: [
-                      Div(children: [Text('You are viewing a post!')]),
-                      BElse(),
-                      Div(children: [Text('Welcome to my blog!')]),
-                    ],
-                  ),
-                  Div(
-                    attributes: Expr.attr('class', 'data:blog.pageType'),
-                    children: [
-                      Text('This div has a namespaced class attribute'),
+                      BIf(
+                        cond: 'data:view.isPost',
+                        children: [
+                          Div(children: [Text('You are viewing a post!')]),
+                          BElse(),
+                          Div(children: [Text('Welcome to my blog!')]),
+                        ],
+                      ),
+                      Div(
+                        attributes: Expr.attr('class', 'data:blog.pageType'),
+                        children: [
+                          Text('This div has a namespaced class attribute'),
+                        ],
+                      ),
                     ],
                   ),
                 ],

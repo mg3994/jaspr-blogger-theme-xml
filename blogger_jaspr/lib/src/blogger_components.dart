@@ -74,6 +74,14 @@ class BInclude extends DomComponent {
         });
 }
 
+class BIncludable extends DomComponent {
+  BIncludable({required String id, var varName, Iterable<Component>? children})
+      : super('b:includable', attributes: {
+          'id': id,
+          if (varName != null) 'var': varName,
+        }, children: children);
+}
+
 class BAttr extends DomComponent {
   BAttr({required String name, required String value})
       : super('b:attr', attributes: {'name': name, 'value': value});
