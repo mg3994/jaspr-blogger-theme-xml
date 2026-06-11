@@ -8,6 +8,12 @@ class Html extends DomComponent {
               'xmlns:b': 'http://www.google.com/2005/gml/b',
               'xmlns:data': 'http://www.google.com/2005/gml/data',
               'xmlns:expr': 'http://www.google.com/2005/gml/expr',
+              'b:css': 'false',
+              'b:defaultwidgetversion': '2',
+              'b:layoutsversion': '3',
+              'b:responsive': 'true',
+              'expr:dir': 'data:blog.languageDirection',
+              'expr:lang': 'data:blog.locale',
               ...?attributes,
             },
             children: children);
