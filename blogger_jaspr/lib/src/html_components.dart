@@ -1,0 +1,46 @@
+import 'core.dart';
+
+class Html extends DomComponent {
+  Html({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('html',
+            attributes: {
+              'xmlns': 'http://www.w3.org/1999/xhtml',
+              'xmlns:b': 'http://www.google.com/2005/gml/b',
+              'xmlns:data': 'http://www.google.com/2005/gml/data',
+              'xmlns:expr': 'http://www.google.com/2005/gml/expr',
+              ...?attributes,
+            },
+            children: children);
+}
+
+class Head extends DomComponent {
+  Head({Iterable<Component>? children}) : super('head', children: children);
+}
+
+class Body extends DomComponent {
+  Body({Iterable<Component>? children}) : super('body', children: children);
+}
+
+class Title extends DomComponent {
+  Title({Iterable<Component>? children}) : super('title', children: children);
+}
+
+class Div extends DomComponent {
+  Div({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('div', attributes: attributes, children: children);
+}
+
+class Script extends DomComponent {
+  Script({String? src, String? type, String? content})
+      : super('script',
+            attributes: {
+              if (src != null) 'src': src,
+              if (type != null) 'type': type,
+            },
+            children: content != null ? [Text(content)] : null);
+}
+
+// Helper for expr: attributes
+Map<String, String> expr(Map<String, String> attributes) {
+  return attributes.map((key, value) => MapEntry('expr:$key', value));
+}
