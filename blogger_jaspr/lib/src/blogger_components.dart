@@ -68,8 +68,75 @@ class BSkin extends Component {
 
 class BInclude extends DomComponent {
   BInclude({required String name, String? data})
-    : super('b:include', attributes: {
-      'name': name,
-      if (data != null) 'data': data,
-    });
+      : super('b:include', attributes: {
+          'name': name,
+          if (data != null) 'data': data,
+        });
+}
+
+class BAttr extends DomComponent {
+  BAttr({required String name, required String value})
+      : super('b:attr', attributes: {'name': name, 'value': value});
+
+  @override
+  Iterable<Component> build() => [];
+}
+
+class BClass extends DomComponent {
+  BClass({required String name, required String cond})
+      : super('b:class', attributes: {'name': name, 'cond': cond});
+
+  @override
+  Iterable<Component> build() => [];
+}
+
+class BTag extends DomComponent {
+  BTag({required String name, required String cond, Iterable<Component>? children})
+      : super('b:tag', attributes: {'name': name, 'cond': cond}, children: children);
+}
+
+class BEval extends DomComponent {
+  BEval({required String expr}) : super('b:eval', attributes: {'expr': expr});
+
+  @override
+  Iterable<Component> build() => [];
+}
+
+class BSwitch extends DomComponent {
+  BSwitch({required String varName, Iterable<Component>? children})
+      : super('b:switch', attributes: {'var': varName}, children: children);
+}
+
+class BCase extends DomComponent {
+  BCase({required String value, Iterable<Component>? children})
+      : super('b:case', attributes: {'value': value}, children: children);
+}
+
+class BDefault extends DomComponent {
+  BDefault({Iterable<Component>? children}) : super('b:default', children: children);
+}
+
+class BMessage extends DomComponent {
+  BMessage({required String name}) : super('b:message', attributes: {'name': name});
+
+  @override
+  Iterable<Component> build() => [];
+}
+
+class BComment extends Component {
+  final String text;
+  const BComment(this.text);
+
+  @override
+  Iterable<Component> build() => [RawText('<!-- $text -->')];
+}
+
+class BTemplateSkin extends Component {
+  final String css;
+  const BTemplateSkin(this.css);
+
+  @override
+  Iterable<Component> build() => [
+        DomComponent('b:template-skin', children: [RawText('<![CDATA[\n$css\n]]>')])
+      ];
 }

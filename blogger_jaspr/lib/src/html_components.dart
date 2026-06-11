@@ -44,3 +44,9 @@ class Script extends DomComponent {
 Map<String, String> expr(Map<String, String> attributes) {
   return attributes.map((key, value) => MapEntry('expr:$key', value));
 }
+
+class Expr {
+  static Map<String, String> attr(String key, String value) => {'expr:$key': value};
+
+  static String get(String value) => 'data:$value';
+}

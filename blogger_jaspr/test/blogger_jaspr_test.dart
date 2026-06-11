@@ -35,4 +35,18 @@ void main() {
       expect(renderer.render(component), contains('<![CDATA[\nbody { color: red; }\n]]>'));
     });
   });
+
+  group('XML Escaping', () {
+    test('escapes control characters', () {
+      var renderer = Renderer();
+      var component = Text('Hello\x00World');
+      expect(renderer.render(component), equals('Hello World'));
+    });
+
+    test('escapes all basic entities', () {
+      var renderer = Renderer();
+      var component = Text('< & > " \'');
+      expect(renderer.render(component), equals('&lt; &amp; &gt; &quot; &apos;'));
+    });
+  });
 }

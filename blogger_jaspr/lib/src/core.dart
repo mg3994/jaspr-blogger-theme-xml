@@ -29,12 +29,37 @@ class DomComponent extends Component {
 }
 
 String _escapeXml(String text) {
-  return text
-      .replaceAll('&', '&amp;')
-      .replaceAll('<', '&lt;')
-      .replaceAll('>', '&gt;')
-      .replaceAll('"', '&quot;')
-      .replaceAll("'", '&apos;');
+  var sb = StringBuffer();
+  for (var i = 0; i < text.length; i++) {
+    var char = text[i];
+    var code = char.codeUnitAt(0);
+
+    // Escape basic XML characters
+    if (char == '&') {
+      sb.write('&amp;');
+    } else if (char == '<') {
+      sb.write('&lt;');
+    } else if (char == '>') {
+      sb.write('&gt;');
+    } else if (char == '"') {
+      sb.write('&quot;');
+    } else if (char == "'") {
+      sb.write('&apos;');
+    }
+    // XML 1.0 restricted control characters (0x00 to 0x1F except 0x09, 0x0A, 0x0D)
+    else if ((code >= 0x00 && code <= 0x08) ||
+        (code >= 0x0B && code <= 0x0C) ||
+        (code >= 0x0E && code <= 0x1F)) {
+      // Replace with a space or just skip. For JS, replacing with space is safer.
+      sb.write(' ');
+    }
+    // Handle non-printable or potentially problematic characters by hex encoding if needed
+    // but for now, the above covers the critical XML requirements.
+    else {
+      sb.write(char);
+    }
+  }
+  return sb.toString();
 }
 
 class Renderer {
