@@ -97,7 +97,17 @@ void main() {
                       BIf(
                         cond: 'data:post.thumbnailUrl',
                         children: [
-                          DomComponent('img', attributes: Expr.attr('src', 'data:post.thumbnailUrl')),
+                          Div(
+                            attributes: {'class': 'post-thumb'},
+                            children: [
+                              DomComponent('a',
+                                  attributes: Expr.attr('href', 'data:post.url'),
+                                  children: [
+                                    DomComponent('img',
+                                        attributes: Expr.attr('src', Expr.resizeImage('data:post.thumbnailUrl', 300, '1:1'))),
+                                  ]),
+                            ],
+                          ),
                           BElse(),
                           DomComponent('img', attributes: {'src': 'https://via.placeholder.com/150'}),
                         ],
@@ -131,6 +141,47 @@ void main() {
                               ),
                             ],
                           ),
+                          Div(
+                            attributes: {'class': 'blog-pager', 'id': 'blog-pager'},
+                            children: [
+                              BIf(
+                                cond: 'data:olderPageUrl',
+                                children: [
+                                  DomComponent('a',
+                                      attributes: {
+                                        'class': 'older-link',
+                                        ...Expr.attr('href', 'data:olderPageUrl'),
+                                        ...Expr.attr('title', 'data:olderPageTitle'),
+                                      },
+                                      children: [
+                                        Text('← Older Posts'),
+                                      ]),
+                                ],
+                              ),
+                              BIf(
+                                cond: 'data:newerPageUrl',
+                                children: [
+                                  DomComponent('a',
+                                      attributes: {
+                                        'class': 'newer-link',
+                                        ...Expr.attr('href', 'data:newerPageUrl'),
+                                        ...Expr.attr('title', 'data:newerPageTitle'),
+                                      },
+                                      children: [
+                                        Text('Newer Posts →'),
+                                      ]),
+                                ],
+                              ),
+                              DomComponent('a',
+                                  attributes: {
+                                    'class': 'home-link',
+                                    ...Expr.attr('href', 'data:blog.homepageUrl'),
+                                  },
+                                  children: [
+                                    Text('Home'),
+                                  ]),
+                            ],
+                          ),
                         ],
                       ),
                     ],
@@ -147,6 +198,8 @@ void main() {
             showaddelement: 'yes',
             children: [
               BWidget(id: 'Label1', type: 'Label', locked: false, title: 'Categories'),
+              BWidget(id: 'Pages1', type: 'Pages', locked: false, title: 'Main Menu'),
+              BWidget(id: 'LinkList1', type: 'LinkList', locked: false, title: 'Social Links'),
               BWidget(
                 id: 'HTML2',
                 type: 'HTML',

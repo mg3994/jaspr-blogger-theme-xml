@@ -57,4 +57,11 @@ class Expr {
   static Map<String, String> attr(String key, String value) => {'expr:$key': value};
 
   static String get(String value) => 'data:$value';
+
+  static String resizeImage(String imageUrl, int newSize, [String? ratio, String? crop]) {
+    var args = [imageUrl, newSize.toString()];
+    if (ratio != null) args.add('"$ratio"');
+    if (crop != null) args.add('"$crop"');
+    return 'resizeImage(${args.join(", ")})';
+  }
 }
