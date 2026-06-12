@@ -7,4 +7,6 @@ Guides and reference for the Dart library.
 - [Utility Classes (Data, Expr, Feeds)](utility_classes.md)
 - [Client-Side Logic (Dart-to-JS)](client_side_logic.md)
 - [Advanced Patterns](advanced_patterns.md)
+- [Architecture & Rendering](architecture.md)
+- [Example Gallery](example_gallery.md)
 - [Performance & Optimization](performance.md)

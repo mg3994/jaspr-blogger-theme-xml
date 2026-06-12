@@ -28,6 +28,14 @@ class DomComponent extends Component {
   Iterable<Component> build() => children ?? [];
 }
 
+class Fragment extends Component {
+  final Iterable<Component> children;
+  const Fragment({required this.children});
+
+  @override
+  Iterable<Component> build() => children;
+}
+
 String _escapeXml(String text) {
   var sb = StringBuffer();
   for (var i = 0; i < text.length; i++) {

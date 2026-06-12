@@ -35,6 +35,29 @@ var theme = BloggerTheme(
 );
 ```
 
+## Mixed Content (JS + Blogger Tags)
+Sometimes you need to mix raw JavaScript with Blogger data tags (e.g., for configuration objects). Since `Text` components are XML-escaped by default, you can use `children` in the `Script` component to combine `Text` and `BData`.
+
+### Example: Cookie Options
+To achieve this output:
+```html
+<script>
+  cookieOptions = {
+    link: "<data:blog.canonicalHomepageUrl/>p/privacy.html"
+  };
+</script>
+```
+
+Use this Dart code:
+```dart
+Script(children: [
+  Text('\n  cookieOptions = {\n    link: "'),
+  BData(value: 'blog.canonicalHomepageUrl'),
+  Text('p/privacy.html"\n  };\n'),
+])
+```
+The `BData` component renders as a self-closing tag (`<data:.../>`) which is valid XML, while the surrounding `Text` remains properly escaped but allows `<` and `>` through the tag structure itself.
+
 ## Security & Performance
 - **No CDATA**: Scripts are fully escaped, not wrapped in CDATA, as per common Blogger compatibility requirements.
 - **Optimization**: The `-O4` flag is used for aggressive minification.

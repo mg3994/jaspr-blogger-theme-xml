@@ -78,13 +78,13 @@ class Button extends DomComponent {
 }
 
 class Script extends DomComponent {
-  Script({String? src, String? type, String? content})
+  Script({String? src, String? type, String? content, Iterable<Component>? children})
       : super('script',
             attributes: {
               if (src != null) 'src': src,
               if (type != null) 'type': type,
             },
-            children: content != null ? [Text(content)] : null);
+            children: children ?? (content != null ? [Text(content)] : null));
 }
 
 // Helper for expr: attributes

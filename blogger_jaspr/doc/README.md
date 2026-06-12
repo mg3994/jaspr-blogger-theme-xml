@@ -17,3 +17,8 @@ How to use the `blogger_jaspr` library.
 - [Client-Side Logic (Dart-to-JS)](dart/client_side_logic.md)
 - [Advanced Patterns](dart/advanced_patterns.md)
 - [Performance & Optimization](dart/performance.md)
+- [Testing Your Theme](dart/testing_themes.md)
+
+## [Troubleshooting & FAQ](FAQ.md)
+- [Blogger Troubleshooting](blogger/troubleshooting.md)
+- [Frequently Asked Questions](FAQ.md)

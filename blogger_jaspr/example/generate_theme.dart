@@ -479,6 +479,11 @@ void main() {
         ],
       ),
       BClientScript('example/client.dart'),
+      Script(children: [
+        Text('\n      cookieOptions = {\n       close: "Got it!",\n       learn: "Privacy Policy",\n       link: "'),
+        BData(value: 'blog.canonicalHomepageUrl'),
+        Text('p/privacy-policy.html"\n      };\n    '),
+      ]),
     ],
   );
 
