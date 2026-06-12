@@ -7,6 +7,7 @@ class BSection extends DomComponent {
     String? maxwidgets,
     String? showaddelement,
     String? growth,
+    String? preferred,
     Iterable<Component>? children,
   }) : super('b:section',
             attributes: {
@@ -15,6 +16,7 @@ class BSection extends DomComponent {
               if (maxwidgets != null) 'maxwidgets': maxwidgets,
               if (showaddelement != null) 'showaddelement': showaddelement,
               if (growth != null) 'growth': growth,
+              if (preferred != null) 'preferred': preferred,
             },
             children: children);
 }
@@ -60,8 +62,13 @@ class BElse extends DomComponent {
 }
 
 class BArg extends DomComponent {
-  BArg({required String name, required String value})
-      : super('b:arg', attributes: {'name': name, 'value': value});
+  BArg({required String name, String? value, String? exprValue})
+      : super('b:arg',
+            attributes: {
+              'name': name,
+              if (value != null) 'value': value,
+              if (exprValue != null) 'expr:value': exprValue,
+            });
 
   @override
   Iterable<Component> build() => [];
@@ -186,10 +193,8 @@ class BDefault extends DomComponent {
 }
 
 class BMessage extends DomComponent {
-  BMessage({required String name}) : super('b:message', attributes: {'name': name});
-
-  @override
-  Iterable<Component> build() => [];
+  BMessage({required String name, Iterable<Component>? children})
+      : super('b:message', attributes: {'name': name}, children: children);
 }
 
 class BVariable {
