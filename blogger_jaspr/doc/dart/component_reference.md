@@ -1,0 +1,70 @@
+# blogger_jaspr Component Reference
+
+All components in `blogger_jaspr` extend the `Component` base class and follow a consistent constructor pattern.
+
+## Blogger-Specific Components
+
+### `BSection`
+Represents `<b:section>`.
+- **Props**: `id`, `className`, `maxwidgets`, `showaddelement`, `growth`, `preferred`.
+```dart
+BSection(id: 'sidebar', className: 'side', showaddelement: 'yes')
+```
+
+### `BWidget`
+Represents `<b:widget>`.
+- **Props**: `id`, `type`, `title`, `locked`, `pageType`, `mobile`.
+```dart
+BWidget(id: 'Header1', type: 'Header', locked: true)
+```
+
+### `BIncludable` & `BInclude`
+Represents `<b:includable>` and `<b:include>`.
+```dart
+BIncludable(id: 'main', children: [
+  BInclude(name: 'post', data: 'p')
+])
+```
+
+### Logic Components
+- `BIf(cond: '...')`
+- `BElseIf(cond: '...')`
+- `BElse()`
+- `BSwitch(varName: '...')` / `BCase(value: '...')` / `BDefault()`
+- `BLoop(values: '...', varName: '...', index: '...')`
+- `BEval(expr: '...')`
+- `BWith(varName: '...', value: '...')`
+
+### Data & Messaging
+- `BData(value: '...')`: Outputs `<data:value/>`.
+- `BMessage(name: '...')`: Outputs `<b:message name='...'/>`.
+- `BArg(name: '...', value: '...', exprValue: '...')`: For includable arguments.
+
+### Styling
+- `BSkin(css, {variables})`: Includes a `<b:skin>` tag with optional `BVariable` / `BGroup` definitions.
+- `BTemplateSkin(css)`: Includes a `<b:template-skin>` tag.
+
+## HTML Components
+Standard tags like `Div`, `P`, `Span`, `A`, `Img`, `Ul`, `Li`, `Form`, `Input`, `Button`, `Script`, `Style`.
+- **Attributes**: Passed via a `Map<String, String>`.
+
+## Example: Building a Post Loop
+```dart
+BIncludable(
+  id: 'main',
+  children: [
+    BLoop(
+      values: 'data:posts',
+      varName: 'p',
+      children: [
+        Div(
+          attributes: {'class': 'post'},
+          children: [
+            BData(value: 'p.title'),
+          ]
+        ),
+      ],
+    ),
+  ],
+)
+```
