@@ -5,6 +5,9 @@ void main() {
   var theme = BloggerTheme(
     head: [
       Title(children: [BData(value: Data.blogPageTitle)]),
+      Meta(attributes: {'charset': 'UTF-8'}),
+      Meta(attributes: {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}),
+      Link(attributes: {'rel': 'canonical', ...Expr.attr('href', 'data:blog.url')}),
       BSkin(
         '''
         body {

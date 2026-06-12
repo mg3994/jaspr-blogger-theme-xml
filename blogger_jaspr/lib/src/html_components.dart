@@ -54,6 +54,27 @@ class Title extends DomComponent {
   Title({Iterable<Component>? children}) : super('title', children: children);
 }
 
+class Meta extends DomComponent {
+  Meta({Map<String, String>? attributes}) : super('meta', attributes: attributes);
+
+  @override
+  Iterable<Component> build() => [];
+}
+
+class Link extends DomComponent {
+  Link({Map<String, String>? attributes}) : super('link', attributes: attributes);
+
+  @override
+  Iterable<Component> build() => [];
+}
+
+class Base extends DomComponent {
+  Base({Map<String, String>? attributes}) : super('base', attributes: attributes);
+
+  @override
+  Iterable<Component> build() => [];
+}
+
 class Div extends DomComponent {
   Div({Map<String, String>? attributes, Iterable<Component>? children})
       : super('div', attributes: attributes, children: children);
@@ -75,6 +96,27 @@ class Input extends DomComponent {
 class Button extends DomComponent {
   Button({Map<String, String>? attributes, Iterable<Component>? children})
       : super('button', attributes: attributes, children: children);
+}
+
+class Img extends DomComponent {
+  Img({Map<String, String>? attributes}) : super('img', attributes: attributes);
+
+  @override
+  Iterable<Component> build() => [];
+}
+
+class Br extends DomComponent {
+  Br() : super('br');
+
+  @override
+  Iterable<Component> build() => [];
+}
+
+class Hr extends DomComponent {
+  Hr() : super('hr');
+
+  @override
+  Iterable<Component> build() => [];
 }
 
 class Script extends DomComponent {

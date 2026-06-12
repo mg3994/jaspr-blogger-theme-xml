@@ -162,8 +162,13 @@ class BClass extends DomComponent {
 }
 
 class BTag extends DomComponent {
-  BTag({required String name, required String cond, Iterable<Component>? children})
-      : super('b:tag', attributes: {'name': name, 'cond': cond}, children: children);
+  BTag({required String name, String? cond, Iterable<Component>? children})
+      : super('b:tag',
+            attributes: {
+              'name': name,
+              if (cond != null) 'cond': cond,
+            },
+            children: children);
 }
 
 class BEval extends DomComponent {

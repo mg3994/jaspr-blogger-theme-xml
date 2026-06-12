@@ -46,6 +46,14 @@ BIncludable(id: 'main', children: [
 
 ## HTML Components
 Standard tags like `Div`, `P`, `Span`, `A`, `Img`, `Ul`, `Li`, `Form`, `Input`, `Button`, `Script`, `Style`.
+
+### SEO & Layout
+- `Meta(attributes: {'name': '...', 'content': '...'})`
+- `Link(attributes: {'rel': '...', 'href': '...'})`
+- `Base(attributes: {'href': '...'})`
+- `Br()`
+- `Hr()`
+
 - **Attributes**: Passed via a `Map<String, String>`.
 
 ## Example: Building a Post Loop
