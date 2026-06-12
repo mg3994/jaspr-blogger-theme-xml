@@ -44,3 +44,30 @@ Define variables in `<b:skin>` to allow users to change colors and fonts via the
  */
  a { color: $mainColor; }
 ```
+
+## Navigation Menus
+Best handled via widgets for user flexibility.
+- **`LinkList` Widget**: Preferred for primary navigation.
+- **`Pages` Widget**: Best for static pages (Home, About).
+- **Custom HTML**: Use for complex dropdowns, typically inside a locked `HTML` widget.
+
+## Pagination
+Standard "Next/Previous" links are available in the `Blog` widget.
+- Use `data:olderPageUrl` and `data:newerPageUrl`.
+- Numbered pagination usually requires a custom JavaScript solution using the JSON feed.
+
+## Comments Section
+- **Native**: Rendered via the `comments-block` includable in the `Blog` widget.
+- **Third-party (e.g. Disqus)**:
+  1. Hide native comments using a conditional.
+  2. Inline the third-party JS snippet.
+  3. Wrap in `<b:if cond='data:view.isPost'>`.
+
+## Labels & Categories
+- **Global**: Use the `Labels` widget.
+- **Post-specific**: Loop through `data:post.labels` inside the post loop.
+```xml
+<b:loop values='data:post.labels' var='label'>
+  <a expr:href='data:label.url'><data:label.name/></a>
+</b:loop>
+```
