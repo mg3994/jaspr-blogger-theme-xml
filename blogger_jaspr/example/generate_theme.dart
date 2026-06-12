@@ -5,9 +5,10 @@ void main() {
   var theme = BloggerTheme(
     head: [
       Title(children: [BData(value: 'blog.pageTitle')]),
-      BSkin('''
+      BSkin(
+        '''
         body {
-          background-color: #f0f0f0;
+          background: \$bgcolor;
           font-family: sans-serif;
         }
         .main-content {
@@ -15,7 +16,16 @@ void main() {
           padding: 20px;
           background: white;
         }
-      '''),
+      ''',
+        variables: [
+          BVariable(
+            name: 'bgcolor',
+            description: 'Page Background Color',
+            type: 'color',
+            defaultValue: '#fff',
+          ),
+        ],
+      ),
       BTemplateSkin('''
         /* Template Skin CSS */
       '''),
@@ -36,20 +46,49 @@ void main() {
                   BIncludable(
                     id: 'main',
                     children: [
+                      BComment(children: [Text('Only include the first 10 posts')]),
+                      BLoop(
+                        varName: 'p',
+                        index: 'index',
+                        values: 'data:posts',
+                        children: [
+                          BInclude(
+                            name: 'post',
+                            data: 'p',
+                            cond: 'data:index < 10',
+                          ),
+                        ],
+                      ),
                       BIf(
                         cond: 'data:view.isPost',
                         children: [
                           Div(children: [Text('You are viewing a post!')]),
+                          BElseIf(cond: 'data:view.isPage'),
+                          Div(children: [Text('You are viewing a page!')]),
                           BElse(),
                           Div(children: [Text('Welcome to my blog!')]),
                         ],
                       ),
-                      Div(
-                        attributes: Expr.attr('class', 'data:blog.pageType'),
+                      BWith(
+                        varName: 'style',
+                        value: '"color: red;"',
                         children: [
-                          Text('This div has a namespaced class attribute'),
+                          Div(
+                            attributes: Expr.attr('style', 'data:style'),
+                            children: [
+                              Text('This has a red color via b:with'),
+                            ],
+                          ),
                         ],
                       ),
+                    ],
+                  ),
+                  BIncludable(
+                    id: 'post',
+                    varName: 'post',
+                    children: [
+                      Text('Title: '),
+                      BData(value: 'post.title'),
                     ],
                   ),
                 ],
