@@ -67,4 +67,15 @@ void main() {
       expect(renderer.render(component), equals('<div attr="value with \'single\' quote"/>'));
     });
   });
+
+  group('Script CDATA', () {
+    test('Script with contentInCDATA does not escape symbols', () {
+      var renderer = Renderer();
+      var component = Script(content: 'if (a && b) {}', contentInCDATA: true);
+      var xml = renderer.render(component);
+      expect(xml, contains('//<![CDATA['));
+      expect(xml, contains('a && b'));
+      expect(xml, isNot(contains('&amp;&amp;')));
+    });
+  });
 }

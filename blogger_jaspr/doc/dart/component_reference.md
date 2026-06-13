@@ -54,6 +54,10 @@ Standard tags like `Div`, `P`, `Span`, `A`, `Img`, `Ul`, `Li`, `Form`, `Input`, 
 - `Br()`
 - `Hr()`
 
+### Interactivity
+- `Script(src: '...', content: '...', contentInCDATA: true/false)`
+  - Use `contentInCDATA: true` to wrap JS in a CDATA block and avoid XML escaping.
+
 - **Attributes**: Passed via a `Map<String, String>`.
 
 ## Example: Building a Post Loop

@@ -120,13 +120,26 @@ class Hr extends DomComponent {
 }
 
 class Script extends DomComponent {
-  Script({String? src, String? type, String? content, Iterable<Component>? children})
-      : super('script',
+  Script({
+    String? src,
+    String? type,
+    String? content,
+    bool? contentInCDATA,
+    Iterable<Component>? children,
+  }) : super('script',
             attributes: {
               if (src != null) 'src': src,
               if (type != null) 'type': type,
             },
-            children: children ?? (content != null ? [Text(content)] : null));
+            children: children ??
+                (content != null
+                    ? [
+                        if (contentInCDATA == true)
+                          RawText('//<![CDATA[\n$content\n//]]>')
+                        else
+                          Text(content)
+                      ]
+                    : null));
 }
 
 // Helper for expr: attributes
