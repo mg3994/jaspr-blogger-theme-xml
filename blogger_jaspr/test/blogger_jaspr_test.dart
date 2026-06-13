@@ -49,4 +49,22 @@ void main() {
       expect(renderer.render(component), equals('&lt; &amp; &gt; &quot; &apos;'));
     });
   });
+
+  group('Attribute Quoting', () {
+    test('uses single quotes when value contains double quotes', () {
+      var renderer = Renderer();
+      var component = DomComponent('link', attributes: {
+        'expr:href': 'data:blog.homepageUrl.canonical path "search"'
+      });
+      expect(renderer.render(component), equals('<link expr:href=\'data:blog.homepageUrl.canonical path "search"\'/>'));
+    });
+
+    test('uses double quotes when value contains single quotes', () {
+      var renderer = Renderer();
+      var component = DomComponent('div', attributes: {
+        'attr': "value with 'single' quote"
+      });
+      expect(renderer.render(component), equals('<div attr="value with \'single\' quote"/>'));
+    });
+  });
 }

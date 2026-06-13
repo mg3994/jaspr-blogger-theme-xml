@@ -36,7 +36,7 @@ class Fragment extends Component {
   Iterable<Component> build() => children;
 }
 
-String _escapeXml(String text) {
+String _escapeXml(String text, {String? quoteToEscape, bool escapeAllQuotes = false}) {
   var sb = StringBuffer();
   for (var i = 0; i < text.length; i++) {
     var char = text[i];
@@ -50,9 +50,17 @@ String _escapeXml(String text) {
     } else if (char == '>') {
       sb.write('&gt;');
     } else if (char == '"') {
-      sb.write('&quot;');
+      if (escapeAllQuotes || quoteToEscape == '"') {
+        sb.write('&quot;');
+      } else {
+        sb.write('"');
+      }
     } else if (char == "'") {
-      sb.write('&apos;');
+      if (escapeAllQuotes || quoteToEscape == "'") {
+        sb.write('&apos;');
+      } else {
+        sb.write("'");
+      }
     }
     // XML 1.0 restricted control characters (0x00 to 0x1F except 0x09, 0x0A, 0x0D)
     else if ((code >= 0x00 && code <= 0x08) ||
@@ -79,12 +87,15 @@ class Renderer {
 
   void _renderComponent(Component component, StringBuffer sb) {
     if (component is Text) {
-      sb.write(component.escape ? _escapeXml(component.value) : component.value);
+      sb.write(component.escape ? _escapeXml(component.value, escapeAllQuotes: true) : component.value);
     } else if (component is DomComponent) {
       sb.write('<${component.tag}');
       if (component.attributes != null) {
         for (var entry in component.attributes!.entries) {
-          sb.write(' ${entry.key}="${_escapeXml(entry.value)}"');
+          var value = entry.value;
+          var useSingleQuote = value.contains('"') && !value.contains("'");
+          var quote = useSingleQuote ? "'" : '"';
+          sb.write(' ${entry.key}=$quote${_escapeXml(value, quoteToEscape: quote)}$quote');
         }
       }
 
