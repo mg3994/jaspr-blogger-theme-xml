@@ -8,6 +8,22 @@ void main() {
       Meta(attributes: {'charset': 'UTF-8'}),
       Meta(attributes: {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}),
       Link(attributes: {'rel': 'canonical', ...Expr.attr('href', 'data:blog.url')}),
+      BTag(
+        name: 'link',
+        cond: '${Data.isMultipleItems} and data:widgets.Blog.first.posts[0].featuredImage',
+        attributes: {
+          ...Expr.attr('href', 'data:widgets.Blog.first.posts[0].featuredImage resizeImage 1600'),
+          'rel': 'image_src',
+        },
+      ),
+      BTag(
+        name: 'link',
+        cond: '${Data.isSingleItem} and data:view.featuredImage',
+        attributes: {
+          ...Expr.attr('href', 'data:view.featuredImage resizeImage 1600'),
+          'rel': 'image_src',
+        },
+      ),
       BSkin(
         '''
         body {
