@@ -103,4 +103,21 @@ void main() {
         equals('<b:widget-settings><b:widget-setting name="test-name">test-value</b:widget-setting></b:widget-settings>'));
     });
   });
+
+  group('SVG Components', () {
+    test('renders Svg with common attributes', () {
+      var renderer = Renderer();
+      var component = Svg(
+        viewBox: '0 0 24 24',
+        width: '18',
+        children: [
+          Path(d: 'M1 1h1v1H1z', fill: 'red')
+        ],
+      );
+      var xml = renderer.render(component);
+      expect(xml, contains('<svg viewBox="0 0 24 24" width="18">'));
+      expect(xml, contains('<path d="M1 1h1v1H1z" fill="red"/>'));
+      expect(xml, contains('</svg>'));
+    });
+  });
 }
