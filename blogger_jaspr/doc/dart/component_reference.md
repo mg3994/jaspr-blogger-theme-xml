@@ -47,12 +47,18 @@ BIncludable(id: 'main', children: [
 ## HTML Components
 Standard tags like `Div`, `P`, `Span`, `A`, `Img`, `Ul`, `Li`, `Form`, `Input`, `Button`, `Script`, `Style`.
 
+### Semantic Tags
+- `Header`, `Footer`, `Main`, `Nav`, `Section`, `Article`, `Aside`
+- `H1`, `H2`, `H3`, `H4`, `H5`, `H6`
+- `P`, `Div`, `Span`
+
 ### SEO & Layout
 - `Meta(attributes: {'name': '...', 'content': '...'})`
 - `Link(attributes: {'rel': '...', 'href': '...'})`
 - `Base(attributes: {'href': '...'})`
 - `Br()`
 - `Hr()`
+- `Img(attributes: {'src': '...', 'alt': '...'})`
 
 ### Interactivity
 - `Script(src: '...', content: '...', contentInCDATA: true/false)`

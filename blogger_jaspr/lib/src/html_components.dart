@@ -80,6 +80,111 @@ class Div extends DomComponent {
       : super('div', attributes: attributes, children: children);
 }
 
+class Span extends DomComponent {
+  Span({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('span', attributes: attributes, children: children);
+}
+
+class Header extends DomComponent {
+  Header({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('header', attributes: attributes, children: children);
+}
+
+class Footer extends DomComponent {
+  Footer({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('footer', attributes: attributes, children: children);
+}
+
+class Main extends DomComponent {
+  Main({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('main', attributes: attributes, children: children);
+}
+
+class Nav extends DomComponent {
+  Nav({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('nav', attributes: attributes, children: children);
+}
+
+class Section extends DomComponent {
+  Section({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('section', attributes: attributes, children: children);
+}
+
+class Article extends DomComponent {
+  Article({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('article', attributes: attributes, children: children);
+}
+
+class Aside extends DomComponent {
+  Aside({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('aside', attributes: attributes, children: children);
+}
+
+class H1 extends DomComponent {
+  H1({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('h1', attributes: attributes, children: children);
+}
+
+class H2 extends DomComponent {
+  H2({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('h2', attributes: attributes, children: children);
+}
+
+class H3 extends DomComponent {
+  H3({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('h3', attributes: attributes, children: children);
+}
+
+class H4 extends DomComponent {
+  H4({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('h4', attributes: attributes, children: children);
+}
+
+class H5 extends DomComponent {
+  H5({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('h5', attributes: attributes, children: children);
+}
+
+class H6 extends DomComponent {
+  H6({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('h6', attributes: attributes, children: children);
+}
+
+class P extends DomComponent {
+  P({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('p', attributes: attributes, children: children);
+}
+
+class Ul extends DomComponent {
+  Ul({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('ul', attributes: attributes, children: children);
+}
+
+class Li extends DomComponent {
+  Li({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('li', attributes: attributes, children: children);
+}
+
+class A extends DomComponent {
+  A({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('a', attributes: attributes, children: children);
+}
+
+class Label extends DomComponent {
+  Label({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('label', attributes: attributes, children: children);
+}
+
+class Select extends DomComponent {
+  Select({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('select', attributes: attributes, children: children);
+}
+
+class Option extends DomComponent {
+  Option({Map<String, String>? attributes, Iterable<Component>? children})
+      : super('option', attributes: attributes, children: children);
+}
+
 class Form extends DomComponent {
   Form({Map<String, String>? attributes, Iterable<Component>? children})
       : super('form', attributes: attributes, children: children);

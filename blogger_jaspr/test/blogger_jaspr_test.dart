@@ -78,4 +78,18 @@ void main() {
       expect(xml, isNot(contains('&amp;&amp;')));
     });
   });
+
+  group('New HTML Tags', () {
+    test('renders Span correctly', () {
+      var renderer = Renderer();
+      var component = Span(children: [Text('Hello')]);
+      expect(renderer.render(component), equals('<span>Hello</span>'));
+    });
+
+    test('renders H1 correctly', () {
+      var renderer = Renderer();
+      var component = H1(children: [Text('Title')]);
+      expect(renderer.render(component), equals('<h1>Title</h1>'));
+    });
+  });
 }
