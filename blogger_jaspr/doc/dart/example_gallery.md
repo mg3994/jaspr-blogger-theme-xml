@@ -28,6 +28,47 @@ BIf(
 )
 ```
 
+## 4. Accordion Menu with Widget Settings
+Manage menu items via the Blogger dashboard while maintaining complex HTML/JS logic.
+
+```dart
+BWidget(
+  id: 'LinkList3',
+  type: 'LinkList',
+  locked: false,
+  title: 'Workspace Menu',
+  version: '2',
+  children: [
+    BWidgetSettings(children: [
+      BWidgetSetting(name: 'text-0', children: ["Nearby Helpers"]),
+      BWidgetSetting(name: 'link-0', children: ["#"]),
+    ]),
+    BIncludable(
+      id: 'main',
+      children: [
+        Div(attributes: {'class': 'module-wrapper'}, children: [
+          Button(
+            attributes: {'onclick': 'toggle()'},
+            children: [Span(children: ["Options"])],
+          ),
+          Ul(children: [
+            BLoop(
+              values: 'data:links',
+              varName: 'link',
+              children: [
+                Li(children: [
+                  A(attributes: Expr.attr('href', 'data:link.target'), children: [BData(value: 'link.name')]),
+                ])
+              ],
+            )
+          ])
+        ])
+      ],
+    )
+  ],
+)
+```
+
 ## 2. Author Box
 Display author information at the end of a post.
 

@@ -29,6 +29,7 @@ class BWidget extends DomComponent {
     bool? locked,
     String? pageType,
     String? mobile,
+    String? version,
     Iterable<dynamic>? children,
   }) : super('b:widget',
             attributes: {
@@ -38,8 +39,19 @@ class BWidget extends DomComponent {
               if (locked != null) 'locked': locked ? 'yes' : 'no',
               if (pageType != null) 'pageType': pageType,
               if (mobile != null) 'mobile': mobile,
+              if (version != null) 'version': version,
             },
             children: children);
+}
+
+class BWidgetSettings extends DomComponent {
+  BWidgetSettings({Iterable<dynamic>? children})
+      : super('b:widget-settings', children: children);
+}
+
+class BWidgetSetting extends DomComponent {
+  BWidgetSetting({required String name, Iterable<dynamic>? children})
+      : super('b:widget-setting', attributes: {'name': name}, children: children);
 }
 
 class BIf extends DomComponent {

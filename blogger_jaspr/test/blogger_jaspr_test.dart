@@ -92,4 +92,15 @@ void main() {
       expect(renderer.render(component), equals('<h1>Title</h1>'));
     });
   });
+
+  group('Widget Settings', () {
+    test('renders BWidgetSettings and BWidgetSetting', () {
+      var renderer = Renderer();
+      var component = BWidgetSettings(children: [
+        BWidgetSetting(name: 'test-name', children: ['test-value'])
+      ]);
+      expect(renderer.render(component),
+        equals('<b:widget-settings><b:widget-setting name="test-name">test-value</b:widget-setting></b:widget-settings>'));
+    });
+  });
 }
