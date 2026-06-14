@@ -17,7 +17,7 @@ class Html extends DomComponent {
     'xmlns:expr': 'http://www.google.com/2005/gml/expr',
   };
 
-  Html({Map<String, String?>? attributes, Iterable<Component>? children})
+  Html({Map<String, String?>? attributes, Iterable<dynamic>? children})
       : super(
           'html',
           attributes: _mergeAttributes(attributes),
@@ -43,15 +43,15 @@ class Html extends DomComponent {
 }
 
 class Head extends DomComponent {
-  Head({Iterable<Component>? children}) : super('head', children: children);
+  Head({Iterable<dynamic>? children}) : super('head', children: children);
 }
 
 class Body extends DomComponent {
-  Body({Iterable<Component>? children}) : super('body', children: children);
+  Body({Iterable<dynamic>? children}) : super('body', children: children);
 }
 
 class Title extends DomComponent {
-  Title({Iterable<Component>? children}) : super('title', children: children);
+  Title({Iterable<dynamic>? children}) : super('title', children: children);
 }
 
 class Meta extends DomComponent {
@@ -76,117 +76,117 @@ class Base extends DomComponent {
 }
 
 class Div extends DomComponent {
-  Div({Map<String, String>? attributes, Iterable<Component>? children})
+  Div({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('div', attributes: attributes, children: children);
 }
 
 class Span extends DomComponent {
-  Span({Map<String, String>? attributes, Iterable<Component>? children})
+  Span({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('span', attributes: attributes, children: children);
 }
 
 class Header extends DomComponent {
-  Header({Map<String, String>? attributes, Iterable<Component>? children})
+  Header({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('header', attributes: attributes, children: children);
 }
 
 class Footer extends DomComponent {
-  Footer({Map<String, String>? attributes, Iterable<Component>? children})
+  Footer({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('footer', attributes: attributes, children: children);
 }
 
 class Main extends DomComponent {
-  Main({Map<String, String>? attributes, Iterable<Component>? children})
+  Main({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('main', attributes: attributes, children: children);
 }
 
 class Nav extends DomComponent {
-  Nav({Map<String, String>? attributes, Iterable<Component>? children})
+  Nav({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('nav', attributes: attributes, children: children);
 }
 
 class Section extends DomComponent {
-  Section({Map<String, String>? attributes, Iterable<Component>? children})
+  Section({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('section', attributes: attributes, children: children);
 }
 
 class Article extends DomComponent {
-  Article({Map<String, String>? attributes, Iterable<Component>? children})
+  Article({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('article', attributes: attributes, children: children);
 }
 
 class Aside extends DomComponent {
-  Aside({Map<String, String>? attributes, Iterable<Component>? children})
+  Aside({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('aside', attributes: attributes, children: children);
 }
 
 class H1 extends DomComponent {
-  H1({Map<String, String>? attributes, Iterable<Component>? children})
+  H1({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('h1', attributes: attributes, children: children);
 }
 
 class H2 extends DomComponent {
-  H2({Map<String, String>? attributes, Iterable<Component>? children})
+  H2({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('h2', attributes: attributes, children: children);
 }
 
 class H3 extends DomComponent {
-  H3({Map<String, String>? attributes, Iterable<Component>? children})
+  H3({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('h3', attributes: attributes, children: children);
 }
 
 class H4 extends DomComponent {
-  H4({Map<String, String>? attributes, Iterable<Component>? children})
+  H4({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('h4', attributes: attributes, children: children);
 }
 
 class H5 extends DomComponent {
-  H5({Map<String, String>? attributes, Iterable<Component>? children})
+  H5({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('h5', attributes: attributes, children: children);
 }
 
 class H6 extends DomComponent {
-  H6({Map<String, String>? attributes, Iterable<Component>? children})
+  H6({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('h6', attributes: attributes, children: children);
 }
 
 class P extends DomComponent {
-  P({Map<String, String>? attributes, Iterable<Component>? children})
+  P({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('p', attributes: attributes, children: children);
 }
 
 class Ul extends DomComponent {
-  Ul({Map<String, String>? attributes, Iterable<Component>? children})
+  Ul({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('ul', attributes: attributes, children: children);
 }
 
 class Li extends DomComponent {
-  Li({Map<String, String>? attributes, Iterable<Component>? children})
+  Li({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('li', attributes: attributes, children: children);
 }
 
 class A extends DomComponent {
-  A({Map<String, String>? attributes, Iterable<Component>? children})
+  A({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('a', attributes: attributes, children: children);
 }
 
 class Label extends DomComponent {
-  Label({Map<String, String>? attributes, Iterable<Component>? children})
+  Label({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('label', attributes: attributes, children: children);
 }
 
 class Select extends DomComponent {
-  Select({Map<String, String>? attributes, Iterable<Component>? children})
+  Select({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('select', attributes: attributes, children: children);
 }
 
 class Option extends DomComponent {
-  Option({Map<String, String>? attributes, Iterable<Component>? children})
+  Option({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('option', attributes: attributes, children: children);
 }
 
 class Form extends DomComponent {
-  Form({Map<String, String>? attributes, Iterable<Component>? children})
+  Form({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('form', attributes: attributes, children: children);
 }
 
@@ -199,7 +199,7 @@ class Input extends DomComponent {
 }
 
 class Button extends DomComponent {
-  Button({Map<String, String>? attributes, Iterable<Component>? children})
+  Button({Map<String, String>? attributes, Iterable<dynamic>? children})
       : super('button', attributes: attributes, children: children);
 }
 
@@ -230,7 +230,7 @@ class Script extends DomComponent {
     String? type,
     String? content,
     bool? contentInCDATA,
-    Iterable<Component>? children,
+    Iterable<dynamic>? children,
   }) : super('script',
             attributes: {
               if (src != null) 'src': src,

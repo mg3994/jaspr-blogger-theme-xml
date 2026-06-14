@@ -8,7 +8,7 @@ class BSection extends DomComponent {
     String? showaddelement,
     String? growth,
     String? preferred,
-    Iterable<Component>? children,
+    Iterable<dynamic>? children,
   }) : super('b:section',
             attributes: {
               'id': id,
@@ -29,7 +29,7 @@ class BWidget extends DomComponent {
     bool? locked,
     String? pageType,
     String? mobile,
-    Iterable<Component>? children,
+    Iterable<dynamic>? children,
   }) : super('b:widget',
             attributes: {
               'id': id,
@@ -43,7 +43,7 @@ class BWidget extends DomComponent {
 }
 
 class BIf extends DomComponent {
-  BIf({required String cond, Iterable<Component>? children})
+  BIf({required String cond, Iterable<dynamic>? children})
       : super('b:if', attributes: {'cond': cond}, children: children);
 }
 
@@ -79,7 +79,7 @@ class BLoop extends DomComponent {
     required String values,
     required String varName,
     String? index,
-    Iterable<Component>? children,
+    Iterable<dynamic>? children,
   }) : super('b:loop',
             attributes: {
               'values': values,
@@ -138,7 +138,7 @@ class BInclude extends DomComponent {
 }
 
 class BIncludable extends DomComponent {
-  BIncludable({required String id, String? varName, Iterable<Component>? children})
+  BIncludable({required String id, String? varName, Iterable<dynamic>? children})
       : super('b:includable', attributes: {
           'id': id,
           if (varName != null) 'var': varName,
@@ -166,7 +166,7 @@ class BTag extends DomComponent {
     required String name,
     String? cond,
     Map<String, String>? attributes,
-    Iterable<Component>? children,
+    Iterable<dynamic>? children,
   }) : super('b:tag',
             attributes: {
               'name': name,
@@ -184,26 +184,26 @@ class BEval extends DomComponent {
 }
 
 class BWith extends DomComponent {
-  BWith({required String varName, required String value, Iterable<Component>? children})
+  BWith({required String varName, required String value, Iterable<dynamic>? children})
       : super('b:with', attributes: {'var': varName, 'value': value}, children: children);
 }
 
 class BSwitch extends DomComponent {
-  BSwitch({required String varName, Iterable<Component>? children})
+  BSwitch({required String varName, Iterable<dynamic>? children})
       : super('b:switch', attributes: {'var': varName}, children: children);
 }
 
 class BCase extends DomComponent {
-  BCase({required String value, Iterable<Component>? children})
+  BCase({required String value, Iterable<dynamic>? children})
       : super('b:case', attributes: {'value': value}, children: children);
 }
 
 class BDefault extends DomComponent {
-  BDefault({Iterable<Component>? children}) : super('b:default', children: children);
+  BDefault({Iterable<dynamic>? children}) : super('b:default', children: children);
 }
 
 class BMessage extends DomComponent {
-  BMessage({required String name, Iterable<Component>? children})
+  BMessage({required String name, Iterable<dynamic>? children})
       : super('b:message', attributes: {'name': name}, children: children);
 }
 
@@ -252,7 +252,7 @@ class BGroup {
 }
 
 class BComment extends DomComponent {
-  BComment({Iterable<Component>? children}) : super('b:comment', children: children);
+  BComment({Iterable<dynamic>? children}) : super('b:comment', children: children);
 }
 
 class XmlComment extends Component {

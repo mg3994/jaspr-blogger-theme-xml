@@ -41,5 +41,18 @@ Div(attributes: {'class': 'container'})
 Div(attributes: Expr.attr('class', 'data:post.pageType'))
 ```
 
-## 4. Conditional Attribute Merging
+## 4. Raw Strings as Children
+Component constructors now accept `Iterable<dynamic>` for children. This means you can pass raw strings directly, which will be automatically converted to `Text` components.
+
+```dart
+final btnClose = Button(
+  children: ["\u00D7"], // Multiplier sign (X)
+  attributes: {
+    'class': 'btn-close',
+    'onclick': 'closeSidebar()'
+  }
+);
+```
+
+## 5. Conditional Attribute Merging
 The `Html` component uses a special `_mergeAttributes` logic. You can use similar logic in your own components to provide defaults that users can override.

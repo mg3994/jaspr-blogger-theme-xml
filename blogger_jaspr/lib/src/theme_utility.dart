@@ -2,8 +2,8 @@ import 'core.dart';
 import 'html_components.dart';
 
 class BloggerTheme extends Component {
-  final Iterable<Component> head;
-  final Iterable<Component> body;
+  final Iterable<dynamic> head;
+  final Iterable<dynamic> body;
   final Map<String, String>? attributes;
 
   const BloggerTheme({

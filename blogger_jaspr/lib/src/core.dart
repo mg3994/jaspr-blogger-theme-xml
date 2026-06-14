@@ -1,7 +1,7 @@
 
 abstract class Component {
   const Component();
-  Iterable<Component> build();
+  Iterable<dynamic> build();
 }
 
 class Text extends Component {
@@ -10,7 +10,7 @@ class Text extends Component {
   const Text(this.value, {this.escape = true});
 
   @override
-  Iterable<Component> build() => [];
+  Iterable<dynamic> build() => [];
 }
 
 class RawText extends Text {
@@ -20,20 +20,20 @@ class RawText extends Text {
 class DomComponent extends Component {
   final String tag;
   final Map<String, String>? attributes;
-  final Iterable<Component>? children;
+  final Iterable<dynamic>? children;
 
   const DomComponent(this.tag, {this.attributes, this.children});
 
   @override
-  Iterable<Component> build() => children ?? [];
+  Iterable<dynamic> build() => children ?? [];
 }
 
 class Fragment extends Component {
-  final Iterable<Component> children;
+  final Iterable<dynamic> children;
   const Fragment({required this.children});
 
   @override
-  Iterable<Component> build() => children;
+  Iterable<dynamic> build() => children;
 }
 
 String _escapeXml(String text, {String? quoteToEscape, bool escapeAllQuotes = false}) {
@@ -85,13 +85,16 @@ class Renderer {
     return sb.toString();
   }
 
-  void _renderComponent(Component component, StringBuffer sb) {
-    if (component is Text) {
-      sb.write(component.escape ? _escapeXml(component.value, escapeAllQuotes: true) : component.value);
-    } else if (component is DomComponent) {
-      sb.write('<${component.tag}');
-      if (component.attributes != null) {
-        for (var entry in component.attributes!.entries) {
+  void _renderComponent(dynamic node, StringBuffer sb) {
+    if (node == null) return;
+    if (node is String) {
+      sb.write(_escapeXml(node, escapeAllQuotes: true));
+    } else if (node is Text) {
+      sb.write(node.escape ? _escapeXml(node.value, escapeAllQuotes: true) : node.value);
+    } else if (node is DomComponent) {
+      sb.write('<${node.tag}');
+      if (node.attributes != null) {
+        for (var entry in node.attributes!.entries) {
           var value = entry.value;
           var useSingleQuote = value.contains('"') && !value.contains("'");
           var quote = useSingleQuote ? "'" : '"';
@@ -99,7 +102,7 @@ class Renderer {
         }
       }
 
-      var children = component.build();
+      var children = node.build();
       if (children.isEmpty) {
         sb.write('/>');
       } else {
@@ -107,12 +110,20 @@ class Renderer {
         for (var child in children) {
           _renderComponent(child, sb);
         }
-        sb.write('</${component.tag}>');
+        sb.write('</${node.tag}>');
       }
-    } else {
-      for (var child in component.build()) {
+    } else if (node is Component) {
+      for (var child in node.build()) {
+        _renderComponent(child, sb);
+      }
+    } else if (node is Iterable) {
+      for (var child in node) {
         _renderComponent(child, sb);
       }
     }
   }
+}
+
+extension StringAsComponent on String {
+  Component get component => Text(this);
 }
