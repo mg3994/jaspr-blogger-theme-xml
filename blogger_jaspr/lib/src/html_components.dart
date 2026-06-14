@@ -190,6 +190,16 @@ class Form extends DomComponent {
       : super('form', attributes: attributes, children: children);
 }
 
+class Details extends DomComponent {
+  Details({Map<String, String>? attributes, Iterable<dynamic>? children})
+      : super('details', attributes: attributes, children: children);
+}
+
+class Summary extends DomComponent {
+  Summary({Map<String, String>? attributes, Iterable<dynamic>? children})
+      : super('summary', attributes: attributes, children: children);
+}
+
 class Input extends DomComponent {
   Input({Map<String, String>? attributes})
       : super('input', attributes: attributes);

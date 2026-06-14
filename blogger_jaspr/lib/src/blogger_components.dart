@@ -280,8 +280,43 @@ class BTemplateSkin extends Component {
   const BTemplateSkin(this.css);
 
   @override
-  Iterable<Component> build() => [
+  Iterable<dynamic> build() => [
         XmlComment('prettier-ignore'),
         DomComponent('b:template-skin', children: [RawText('<![CDATA[\n$css\n]]>')])
       ];
+}
+
+class BTemplateScript extends DomComponent {
+  BTemplateScript({required String name, required String version, bool? async})
+      : super('b:template-script',
+            attributes: {
+              'name': name,
+              'version': version,
+              if (async != null) 'async': async.toString(),
+            });
+
+  @override
+  Iterable<dynamic> build() => [];
+}
+
+class BParam extends DomComponent {
+  BParam({String? value, String? exprValue})
+      : super('b:param',
+            attributes: {
+              if (value != null) 'value': value,
+              if (exprValue != null) 'expr:value': exprValue,
+            });
+
+  @override
+  Iterable<dynamic> build() => [];
+}
+
+class BDefaultMarkup extends DomComponent {
+  BDefaultMarkup({required String type, Iterable<dynamic>? children})
+      : super('b:defaultmarkup', attributes: {'type': type}, children: children);
+}
+
+class BDefaultMarkups extends DomComponent {
+  BDefaultMarkups({Iterable<dynamic>? children})
+      : super('b:defaultmarkups', children: children);
 }

@@ -120,4 +120,30 @@ void main() {
       expect(xml, contains('</svg>'));
     });
   });
+
+  group('New Blogger Tags', () {
+    test('renders BTemplateScript correctly', () {
+      var renderer = Renderer();
+      var component = BTemplateScript(name: 'indie', version: '1.0.0', async: true);
+      expect(renderer.render(component), equals('<b:template-script name="indie" version="1.0.0" async="true"/>'));
+    });
+
+    test('renders BDefaultMarkup correctly', () {
+      var renderer = Renderer();
+      var component = BDefaultMarkup(type: 'Common', children: [Text('Markup')]);
+      expect(renderer.render(component), equals('<b:defaultmarkup type="Common">Markup</b:defaultmarkup>'));
+    });
+
+    test('renders BMessage with BParam', () {
+      var renderer = Renderer();
+      var component = BMessage(name: 'data:messages.search', children: [
+        BParam(value: 'Search term'),
+        BParam(exprValue: 'data:blog.title')
+      ]);
+      var xml = renderer.render(component);
+      expect(xml, contains('<b:message name="data:messages.search">'));
+      expect(xml, contains('<b:param value="Search term"/>'));
+      expect(xml, contains('<b:param expr:value="data:blog.title"/>'));
+    });
+  });
 }

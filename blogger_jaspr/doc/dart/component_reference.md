@@ -37,8 +37,9 @@ BIncludable(id: 'main', children: [
 
 ### Data & Messaging
 - `BData(value: '...')`: Outputs `<data:value/>`.
-- `BMessage(name: '...')`: Outputs `<b:message name='...'/>`.
+- `BMessage(name: '...', children: [...])`: Outputs `<b:message name='...'/>`.
 - `BArg(name: '...', value: '...', exprValue: '...')`: For includable arguments.
+- `BParam(value: '...', exprValue: '...')`: For message parameters.
 
 ### Styling
 - `BSkin(css, {variables})`: Includes a `<b:skin>` tag with optional `BVariable` / `BGroup` definitions.
